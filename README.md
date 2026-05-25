@@ -1,25 +1,163 @@
-# Car Price Predictor
+# 🚗 Car Price Estimator
 
-This is a Python project that scrapes car data from TrueCar and uses Machine Learning to predict prices.
+A Python project that estimates the price of a used car based on its **mileage** and **year of manufacture** using:
 
-## How it Works
-1. **Scraping:** It gets car information (Price, Mileage, Year) from TrueCar.com based on the model you enter.
-2. **Database:** It saves the data into a MySQL database named `cars_information`.
-3. **Machine Learning:** It uses a Decision Tree model to estimate your car's price based on its mileage and year.
+- Web scraping (TrueCar)
+- MySQL database storage
+- Decision Tree Machine Learning model (scikit-learn)
 
-## Requirements
-You need to install these libraries:
-- `requests`
-- `beautifulsoup4`
-- `mysql-connector-python`
-- `scikit-learn`
+---
 
-## Setup
-1. Create a MySQL database named `cars_information`.
-2. Create two tables: `price` and `milesyear`.
-3. Run the script: `python your_script_name.py`
+## 🚀 Overview
 
-## Features
-- Real-time data scraping.
-- SQL Database integration.
-- Simple AI for price estimation.
+This project collects real-world used car data from the web, stores it in a database, and trains a model to predict car prices.
+
+### Workflow:
+
+1. Scrape car listings from TrueCar
+2. Extract:
+   - Price
+   - Mileage
+   - Year
+3. Store data in MySQL
+4. Train a Decision Tree model
+5. Predict price based on user input
+
+---
+
+## 🧠 Features
+
+- 🌐 Web scraping using `requests` and `BeautifulSoup`
+- 🗄️ MySQL database integration
+- 🤖 Machine Learning using `DecisionTreeClassifier`
+- 📊 Real-world data-driven predictions
+- 🧩 Simple interactive CLI interface (Persian prompts)
+
+---
+
+## ⚙️ Technologies Used
+
+- Python
+- requests
+- BeautifulSoup (bs4)
+- regex (`re`)
+- MySQL (`mysql.connector`)
+- scikit-learn (`DecisionTreeClassifier`)
+
+---
+
+## 📥 Input
+
+User provides:
+
+- Car model (for scraping)
+- Mileage (کارکرد)
+- Year (سال ساخت)
+
+---
+
+## 📤 Output
+
+- Estimated car price based on trained model
+
+Example:
+
+```
+قيمت احتمالي ماشين شما: 25000
+```
+
+---
+
+## 🛠️ How It Works
+
+### 1. Web Scraping
+
+- Fetches pages from:
+  ```
+  https://www.truecar.com/used-cars-for-sale/listings/<model>/?page=<n>
+  ```
+- Extracts:
+  - Price using regex
+  - Mileage
+  - Year
+
+---
+
+### 2. Data Storage
+
+- Stores scraped data in MySQL tables:
+  - `price`
+  - `milesyear`
+
+---
+
+### 3. Model Training
+
+- Reads data from database
+- Builds dataset:
+  - `X = [mileage, year]`
+  - `y = price`
+- Trains a Decision Tree classifier
+
+---
+
+### 4. Prediction
+
+- Takes user input
+- Predicts price using trained model
+
+---
+
+## 🗃️ Database Structure
+
+### Table: price
+| Column |
+|--------|
+| price  |
+
+### Table: milesyear
+| Column |
+|--------|
+| miles  |
+| year   |
+
+---
+
+## ▶️ How to Run
+
+1. Install dependencies:
+
+```bash
+pip install requests beautifulsoup4 mysql-connector-python scikit-learn
+```
+
+2. Setup MySQL database:
+
+```sql
+CREATE DATABASE cars_information;
+
+CREATE TABLE price (
+    price INT
+);
+
+CREATE TABLE milesyear (
+    miles INT,
+    year INT
+);
+```
+
+3. Run the script:
+
+```bash
+python script.py
+```
+
+---
+
+## 💡 Applications
+
+- Car price estimation tools
+- Data-driven pricing analysis
+- Learning web scraping + ML pipelines
+- Educational projects
+
